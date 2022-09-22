@@ -1,11 +1,4 @@
 
-/*
- ***********************************************************************************
- *                                   mm.c                                          *
- *  Starter package for a 64-bit struct-based explicit free list memory allocator  *        
- *                                                                                 *
- *  ********************************************************************************    
- */
 
 #include <stdio.h>
 #include <stdlib.h>

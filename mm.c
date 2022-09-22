@@ -9,58 +9,6 @@
 #include "memlib.h"
 #include "mm.h"
 
- /* 
- *
- * Each block has header and footer of the form:
- * 
- *      63                  4  3  2  1  0 
- *      -----------------------------------
- *     | s  s  s  s  ... s  s  0  0  0  a/f
- *      ----------------------------------- 
- * 
- * where s are the meaningful size bits and a/f is set 
- * iff the block is allocated. The list has the following form:
- *
- *
- *    begin                                   end
- *    heap                                    heap  
- *  +-----------------------------------------------+
- *  | ftr(0:a)   | zero or more usr blks | hdr(0:a) |
- *  +-----------------------------------------------+
- *  |  prologue  |                       | epilogue |
- *  |  block     |                       | block    |
- *
- *
- * The allocated prologue and epilogue blocks are overhead that
- * eliminate edge conditions during coalescing.
- *
- */
-
-/*  Empty block
- *  ------------------------------------------------*
- *  |HEADER:    block size   |     |     | alloc bit|
- *  |-----------------------------------------------|
- *  | pointer to prev free block in this size list  |
- *  |-----------------------------------------------|
- *  | pointer to next free block in this size list  |
- *  |-----------------------------------------------|
- *  |FOOTER:    block size   |     |     | alloc bit|
- *  ------------------------------------------------
- */
-
-/*   Allocated block
- *   ------------------------------------------------*
- *   |HEADER:    block size   |     |     | alloc bit|
- *   |-----------------------------------------------|
- *   |               Data                            |
- *   |-----------------------------------------------|
- *   |               Data                            |
- *   |-----------------------------------------------|
- *   |FOOTER:    block size   |     |     | alloc bit|
- *   -------------------------------------------------
- */
-
-/* Basic constants */
 
 typedef uint64_t word_t;
 
